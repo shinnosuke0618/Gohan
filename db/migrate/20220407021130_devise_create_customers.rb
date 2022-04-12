@@ -11,6 +11,10 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      t.string :name, null: false
+      t.text :introduction, null: false
+      t.boolean :is_deleted, null: false, default:false
+
       ## Rememberable
       t.datetime :remember_created_at
 
