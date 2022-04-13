@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'genres/index'
-    get 'genres/show'
-  end
+ #会員用
+  devise_for :customers, skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+
   #管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
 
-  #会員用
-  devise_for :customers, skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-  }
+
 
   #管理者側ルーティング
   namespace :admin do
@@ -30,7 +28,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :genres, only: [:index, :show]
 
-    resource "customers", only: [:edit, :show, :update]
+    resource "customers", path: 'customers/my_page', only: [:edit, :show, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
   end
