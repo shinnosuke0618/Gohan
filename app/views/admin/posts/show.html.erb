@@ -1,0 +1,48 @@
+<div class="container px-5 px-sm-0">
+  <div class="row mt-5">
+
+    <h2>グルメ詳細</h2>
+
+    <div class="col-md-3">
+      <%= image_tag @post.get_image, size:'300x300' %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <table class="table">
+        <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>説明</th>
+          <td><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @post.genre.name %></td>
+        </tr>
+        <tr>
+          <th>レストラン名</th>
+          <td><%= @post.restaurant_name %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @post.phone_number %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @post.address %></td>
+        </tr>
+
+         <tr>
+          <th>投稿者</th>
+          <td><%= @post.customer.name %></td>
+        </tr>
+      </table>
+
+      <%= link_to '編集する', edit_admin_post_path(@post), class: 'btn btn-success' %>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_book_#{@post.id}"%>
+      <%= link_to '一覧画面へ', admin_posts_path, class: 'btn btn-primary ml-4' %>
+    </div>
+  </div>
+</div>
