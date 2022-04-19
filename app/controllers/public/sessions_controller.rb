@@ -23,6 +23,8 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+
   protected
   # 退会しているかを判断するメソッド
     def customer_state
@@ -45,5 +47,11 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def guest_sign_in
+    public = Public.guest
+    sign_in customer
+    redirect_to root_path, notice: 'guestuserでログインしました。'
+   end
 
 end

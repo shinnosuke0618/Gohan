@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  #会員用
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
   }
 
   #管理者用
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
 
+  #ゲストログイン用
+ 
 
 
   #管理者側ルーティング
@@ -29,6 +31,8 @@ Rails.application.routes.draw do
      resources :reviews, only: [:index, :create]
     end
     resources :genres, only: [:index, :show]
+    
+    post 'customer/guest_sign_in', to: 'customers/sessions#guest_sign_in'
 
     resource "customers", path: 'customers/my_page', only: [:edit, :show, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
