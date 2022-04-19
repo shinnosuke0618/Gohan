@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @review = Review.new
   end
 
   def edit

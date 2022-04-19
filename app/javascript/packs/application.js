@@ -13,7 +13,11 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+// import "reviews";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')
