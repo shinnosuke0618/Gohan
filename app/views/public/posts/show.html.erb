@@ -2,7 +2,7 @@
   <div class="row mt-5">
 
     <h2>グルメ詳細</h2>
-
+  
     <div class="col-md-3">
       <%= image_tag @post.get_image, size:'300x300' %>
     </div>
@@ -38,6 +38,13 @@
           <th>投稿者</th>
           <td>
             <%= @post.customer.name %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>レビュー</th>
+          <td>
+            <%= render 'public/reviews/review', review: @review, post: @post %>
           </td>
         </tr>
       </table>
