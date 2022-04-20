@@ -48,10 +48,4 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  def guest_sign_in
-    public = Public.guest
-    sign_in customer
-    redirect_to root_path, notice: 'guestuserでログインしました。'
-   end
-
 end
