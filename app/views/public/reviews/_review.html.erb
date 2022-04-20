@@ -1,4 +1,3 @@
-<p class="is-size-4 mb-3">レビューを書く</p>
 <% if review.errors.any? %>
   <div class="notification is-danger">
     <h2><%= review.errors.count %>件のエラーがあります。</h2>
@@ -11,38 +10,33 @@
 <% end %>
 <div class="rating-box mt-3">
   <%= form_with model: review, url: post_reviews_path(post), local: true do |f| %>
-    <div class="main-rating">
-      <div class="ratings mb-3">
-        <span class="far fa-star" id="star"></span>
-        <span class="far fa-star" id="star"></span>
-        <span class="far fa-star" id="star"></span>
-        <span class="far fa-star" id="star"></span>
-        <span class="far fa-star" id="star"></span>
+    <div class="field">
+      <div  id="star">
+        <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :score, id: :review_score %>
       </div>
-      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
-    </div>
-    <%= f.hidden_field :post_id, value: post.id %>
-    <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_field :content, class: "textarea" %>
-    <%= f.submit "保存", class: "button mt-3" %>
-    <%= link_to "他のレビューを見る", post_reviews_path(post), class: "button light ml-3 mt-3" %>
-  <% end %>
-</div>
+      <div>
+        <%= f.label :コメント %>
+        <%= f.text_field :content %>
+      </div>
 
-<%#= javascript_include_tag 'reviews.js' %>
+      <div>
+        <%= f.submit "評価する", class: 'btn btn-success' %>
+      </div>
 
-<style>
-.rating-box .ratings .fa{
-  font-size: 30px;
-  color:#ffcc00;
-  cursor: pointer;
-}
+      <%= link_to "他のレビューを見る", post_reviews_path(post), class: "button light ml-3 mt-3" %>
 
-.main-rating {
-  display: flex;
-}
+      <!-- 評価javascript -->
+        <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
 
-.rating-value-display {
-  font-size: 20px;
-}
-</style>
+          scoreName: 'comment[star]',
+          half: false,
+        });
+        </script>
+
+      <% end %>
+　　</div>

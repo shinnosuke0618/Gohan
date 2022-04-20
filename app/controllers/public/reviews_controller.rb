@@ -13,7 +13,7 @@ before_action :authenticate_customer!, only: [:create]
       redirect_to post_reviews_path(@review.post)
     else
       @post = Post.find(params[:post_id])
-      render "posts/show"
+      redirect_to posts_path
     end
   end
 

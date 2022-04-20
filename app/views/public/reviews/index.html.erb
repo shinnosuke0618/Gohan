@@ -10,10 +10,7 @@
           </header>
           <div class="card-content">
             <div class="content average-score">
-              <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: <%= @post.review_score_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
-              </div>
+            
               <div class="average-score-display ml-3 pt-2">
                 <%= @post.avg_score %>点（<%= @post.reviews.count %>件のレビュー）
               </div>
@@ -33,6 +30,16 @@
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
               </tr>
+               <script>
+                $('#star-score<%= comment.id%>').raty({
+                  size      : 36,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  half      : false,
+                  readOnly: true,
+                  score: <%= comment.star %>,
+                });
+              </script>
             <% end %>
           </tbody>
         </table>
