@@ -10,8 +10,21 @@
           </header>
           <div class="card-content">
             <div class="content average-score">
-            
-              <div class="average-score-display ml-3 pt-2">
+
+              
+              <div class="average-review-rating" data-score=<%= @post.avg_score %>></div>
+                <script>
+                  $('.average-review-rating').raty({
+                    readOnly: true,
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    score: function() {
+                      return $(this).attr('data-score')
+                    }
+                  });
+                </script>
+                <div class="average-score-display ml-3 pt-2">
                 <%= @post.avg_score %>点（<%= @post.reviews.count %>件のレビュー）
               </div>
             </div>
@@ -20,26 +33,17 @@
         <table class="table is-fullwidth has-text-centered">
           <thead>
             <tr>
-              <th>ユーザー</th><th>点数</th><th>内容</th>
+              <th>ユーザー</th><th>点数</th><th>コメント</th>
             </tr>
           </thead>
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-                <td><%= review.custmer.name %></td>
+                <td><%= review.customer.name %></td>
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
               </tr>
-               <script>
-                $('#star-score<%= comment.id%>').raty({
-                  size      : 36,
-                  starOff   : '<%= asset_path('star-off.png') %>',
-                  starOn    : '<%= asset_path('star-on.png') %>',
-                  half      : false,
-                  readOnly: true,
-                  score: <%= comment.star %>,
-                });
-              </script>
+
             <% end %>
           </tbody>
         </table>

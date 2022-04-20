@@ -7,13 +7,14 @@ before_action :authenticate_customer!, only: [:create]
   end
 
   def create
+    @post = Post.find(params[:post_id])
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
+    @review.post_id = @post.id
     if @review.save
       redirect_to post_reviews_path(@review.post)
     else
-      @post = Post.find(params[:post_id])
-      redirect_to posts_path
+      render 'public/posts/show'
     end
   end
 
