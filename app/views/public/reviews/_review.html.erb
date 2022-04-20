@@ -9,12 +9,13 @@
   </div>
 <% end %>
 <div class="rating-box mt-3">
-  <%= form_with model: review, url: post_reviews_path(post), local: true do |f| %>
+  <%= form_with model: [post, review], url: post_reviews_path(post), local: true do |f| %>
     <div class="field">
       <div  id="star">
         <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
-        <%= f.hidden_field :score, id: :review_score %>
+        <%= f.hidden_field :score, id: :review_star %>
       </div>
+
       <div>
         <%= f.label :コメント %>
         <%= f.text_field :content %>
@@ -33,7 +34,7 @@
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
 
-          scoreName: 'comment[star]',
+          scoreName: 'review[score]',
           half: false,
         });
         </script>
