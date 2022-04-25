@@ -19,7 +19,9 @@ before_action :authenticate_customer!, only: [:create]
   end
 
   private
+
   def review_params
     params.require(:review).permit(:post_id, :score, :content)
   end
+
 end

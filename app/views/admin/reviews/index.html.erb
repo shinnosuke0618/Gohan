@@ -1,34 +1,43 @@
-<p><%= @post.title %></p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-10 mx-auto">
+      <h2 class="table-active"><%= @post.title %></h2>
 
-<table class="table is-fullwidth has-text-centered">
-  <thead>
-    <tr>
-      <th>ユーザー</th><th>点数</th><th>コメント</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.customer.name %></td>
-        <td><%= review.score %></td>
-        <td><%= review.content %></td>
-        <td><div id="star_<%= review.id%>"></div>
-        <script>
-        $('#star_<%= review.id %>').empty();
-        $('#star_<%= review.id %>').raty({
-          size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          half: false,
-          readOnly: true,
-          score: <%= review.score %>,
-        });
-        </script></td>
-        <td>
-        <%= link_to '削除する', admin_post_review_path(post_id: @post.id,id: review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy"%>
-        </td>
-              </tr>
+      <table class="table is-fullwidth has-text-centered">
+        <thead>
+          <tr>
+            <th>ユーザー</th><th>点数</th><th>コメント</th>
+          </tr>
+        </thead>
 
-            <% end %>
-          </tbody>
-        </table>
+        <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.customer.name %></td>
+            <td><%= review.score %></td>
+            <td><%= review.content %></td>
+            <td>
+              <div id="star_<%= review.id%>"></div>
+                <script>
+                $('#star_<%= review.id %>').empty();
+                $('#star_<%= review.id %>').raty({
+                  size     : 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  half: false,
+                  readOnly: true,
+                  score: <%= review.score %>,
+                });
+                </script>
+            </td>
+            <td>
+            <%= link_to '削除する', admin_post_review_path(post_id: @post.id,id: review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy"%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

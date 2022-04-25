@@ -18,23 +18,39 @@
   </br>
 
   <div class="row">
-   <div class="col-lg-9">
-    <table class="table table-bordered">
-      <tr>
-        <th class="col-lg-2 active">名前</th>
-        <td><%= @customer.name %></td>
-      </tr>
-      <tr>
-        <th class="col-lg-2 active">自己紹介</th>
-        <td><%= @customer.introduction %></td>
-      </tr>
-      <tr>
-        <th class="col-lg-2 active">メールアドレス</th>
-        <td><%= @customer.email %></td>
-      </tr>
-    </table>
-   </div>
+     <div class="col-lg-9">
+      <table class="table table-bordered">
+        <tr>
+          <th class="col-lg-2 active">名前</th>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <th class="col-lg-2 active">自己紹介</th>
+          <td><%= @customer.introduction %></td>
+        </tr>
+        <tr>
+          <th class="col-lg-2 active">メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+     </div>
   </div>
 
-  <%#投稿一覧を後で入れるよ %>
+  <div class="d-flex flex-wrap">
+    <% @customer.posts.each do |post| %>
+      <div class="mt-5 mr-4">
+        <%= link_to post_path(post.id) do %>
+        <%= image_tag post.get_image, size:'160x165', class: 'shadow' %>
+        </br>
+        <div class="mt-3">
+        <p style="color: black"><strong><%= post.title %></strong></p>
+        <br>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= paginate @posts %>
+
 </div>

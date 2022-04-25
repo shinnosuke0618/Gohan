@@ -10,98 +10,100 @@
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
           <% if customer_signed_in? %>
-           <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to customers_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-user"></i>　マイページ
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to posts_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-tags"></i>　投稿一覧
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%=  link_to genres_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-utensils"></i>　ジャンル一覧
-            <% end %>
-            </button>
-          </li>
-           <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i>　ログアウト
-            <% end %>
-            </button>
-          </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to customers_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-solid fa-user"></i>　マイページ
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to posts_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-solid fa-tags"></i>　投稿一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%=  link_to genres_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-utensils"></i>　ジャンル一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i>　ログアウト
+              <% end %>
+              </button>
+            </li>
 
-         <% elsif admin_signed_in? %>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-users"></i>　会員一覧
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-tags"></i>　投稿一覧
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to admin_genres_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-utensils"></i>　ジャンル一覧
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i>　ログアウト
-            <% end %>
-            </button>
-          </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-solid fa-users"></i>　会員一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-solid fa-tags"></i>　投稿一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to admin_genres_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-utensils"></i>　ジャンル一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i>　ログアウト
+              <% end %>
+              </button>
+            </li>
 
-         <% else %>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to about_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-store"></i> About
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to genres_path,class: 'nav-link text-dark' do %>
-              　<i class="fas fa-utensils"></i> ジャンル一覧
-            <% end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
-            <% end %>
-          </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%= link_to new_customer_session_path ,class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-            </button>
-          </li>
+          <% else %>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to about_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-solid fa-store"></i> About
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to genres_path,class: 'nav-link text-dark' do %>
+                　<i class="fas fa-utensils"></i> ジャンル一覧
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
+              <%= link_to new_customer_session_path ,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+              </button>
+            </li>
 
-         <% end %>
+          <% end %>
+
         </ul>
       </div>
+
     </div>
   </nav>
 </header>

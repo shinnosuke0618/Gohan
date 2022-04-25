@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @posts = @customer.posts.page(params[:page])
   end
 
   def edit
@@ -15,15 +16,15 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "会員情報を更新しました。"
       redirect_to customers_path
      else
-       flash.now[:alert] = "会員情報を入力してください。"
-       render :edit
+      flash.now[:alert] = "会員情報を入力してください。"
+      render :edit
      end
   end
 
   def unsubscribe #退会確認画面
   end
 
-  def withdraw
+  def withdraw #退会メソッド
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session

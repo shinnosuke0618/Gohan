@@ -4,7 +4,7 @@
      <h3 class="table-active"><%= @customer.name %>さんの登録情報</h3>
     </div>
   </div>
-  
+
   <div class="row">
    <div class="col-lg-9">
     <table class="table table-bordered">
@@ -29,12 +29,10 @@
         <td><%= @customer.is_deleted? ? "退会" : "有効" %></td>
       </tr>
     </table>
-     
    </div>
   </div>
     <div class="my-auto">
      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-info" %>
     </div>
-  
 </div>
 
