@@ -2,7 +2,7 @@
   <div class="row mt-5">
 
     <h2>グルメ詳細</h2>
-  
+
     <div class="col-md-3">
       <%= image_tag @post.get_image, size:'300x300' %>
     </div>
@@ -51,7 +51,7 @@
 
       <% if @post.customer == current_customer %>
       <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-success' %>
-      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy"%>
       <% end %>
       <%= link_to '一覧画面へ', posts_path, class: 'btn btn-primary ml-4' %>
     </div>

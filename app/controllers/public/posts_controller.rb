@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!, only: [:new, :create]
   def new
     @post = Post.new
   end
@@ -29,8 +30,10 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post)
     else
+      flash.now[:alert] = "未記入箇所がございます。"
       render :edit
     end
   end

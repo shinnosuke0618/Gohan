@@ -11,8 +11,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customers_path
+     if @customer.update(customer_params)
+      flash[:notice] = "会員情報を更新しました。"
+      redirect_to customers_path
+     else
+       flash.now[:alert] = "会員情報を入力してください。"
+       render :edit
+     end
   end
 
   def unsubscribe #退会確認画面
@@ -28,8 +33,9 @@ class Public::CustomersController < ApplicationController
   def guest_sign_in  #ゲストログイン
     customer = Customer.guest
     sign_in customer
-    redirect_to root_path, notice: 'guestuserでログインしました。'
+    redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
   end
+
 
   private
 

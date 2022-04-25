@@ -1,2 +1,32 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="cntainer">
+	<div class="main-visual">
+		<div class="main-visual-content">
+			<h3 class="main-visual-text">
+			  あなただけの<br/><br/>
+			  ごはんを見つけませんか？
+			</h3>
+		</div>
+	</div>
+	
+	<div class="container text-center">
+ 	    <div class="row">
+	 		<div class="col">
+				<h2 class="text p-5">最新記事</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<% @posts.each do |post| %>
+			<div class="col-md-3">
+				<div class="card text-center shadow-lg" style="width: 13rem;">
+					<%= link_to post_path(post) do %>
+					<%= image_tag post.get_image, size:'70x200', class:"card-img-top" %></br>
+					<h6 class="card-text"><%= post.title %></h6>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	
+</div>
