@@ -18,17 +18,17 @@
 
       <div>
         <%= f.label :コメント %>
-        <%= f.text_field :content %>
+        <%= f.text_area :content %>
       </div>
 
       <div>
         <%= f.submit "評価する", class: 'btn btn-success' %>
+        <%= link_to "他のレビューを見る", post_reviews_path(post), class: "button light ml-3 mt-3" %>
       </div>
-
-      <%= link_to "他のレビューを見る", post_reviews_path(post), class: "button light ml-3 mt-3" %>
 
       <!-- 評価javascript -->
         <script>
+        $('#star').empty();
         $('#star').raty({
           size     : 36,
           starOff:  '<%= asset_path('star-off.png') %>',

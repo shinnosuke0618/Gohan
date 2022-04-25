@@ -9,9 +9,11 @@
     <div class="col-lg-2">
      <h4>登録情報</h4>
     </div>
+    <% if @customer.name != "guestuser" %>
     <div class="my-auto">
      <%= link_to "編集する", edit_customers_path, class: "btn btn-info" %>
     </div>
+    <% end %>
   </div>
   </br>
 

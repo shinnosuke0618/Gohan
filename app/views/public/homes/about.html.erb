@@ -1,2 +1,30 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="cntainer">
+	<div class="about-visual">
+		<div class="about-visual-content">
+			<h4 class="about-visual-text">
+			  ようこそ！！<br/><br/>
+			  ここはあなたの今日のごはんを見つける<br/><br/>
+			  グルメサイトです。<br/><br/><br/>
+			  見つけるだけではなく、あなたのオススメの<br/><br/>
+			  ごはんを共有できます！！<br/><br/>
+			  様々なジャンルの中から、<br/><br/>
+			  とっておきのお店を見つけてみませんか？
+			</h4>
+		</div>
+	</div>
+
+	<div class="row">
+	  
+	  <h4 class="text-center p-5">
+	  <%= link_to posts_path do %>
+			投稿一覧
+		<% end %>
+		&emsp;&emsp;
+		<%= link_to genres_path do %>
+			ジャンル一覧
+		<% end %>
+		</h4>
+
+	</div>
+
+</div>

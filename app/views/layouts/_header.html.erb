@@ -1,16 +1,13 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffff99">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span class="logo">今日のごはん</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle naviigation">
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><span class="logo"></a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="ナビゲーションバーの切替">
+      <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-
-        <nav class="navbar navbar-light">
-        <form class="container-fluid justify-content-start">
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
           <% if customer_signed_in? %>
            <li>
@@ -23,7 +20,7 @@
           <li>
             <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
             <%= link_to posts_path,class: 'nav-link text-dark' do %>
-              <i class="fa-brands fa-readme"></i>　投稿一覧
+              <i class="fas fa-solid fa-tags"></i>　投稿一覧
             <% end %>
             </button>
           </li>
@@ -45,13 +42,6 @@
          <% elsif admin_signed_in? %>
           <li>
             <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
-            <%#= link_to admin_questions_path,class: 'nav-link text-dark' do %>
-              <i class="fa-solid fa-messages-question"></i>　質問一覧
-            <%# end %>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
             <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
               <i class="fas fa-solid fa-users"></i>　会員一覧
             <% end %>
@@ -60,14 +50,14 @@
           <li>
             <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
             <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
-              <i class="fa-brands fa-readme"></i>　投稿一覧
+              <i class="fas fa-solid fa-tags"></i>　投稿一覧
             <% end %>
             </button>
           </li>
           <li>
             <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
             <%= link_to admin_genres_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-tags"></i>　ジャンル一覧
+              <i class="fas fa-utensils"></i>　ジャンル一覧
             <% end %>
             </button>
           </li>
@@ -90,7 +80,7 @@
           <li>
             <button type="button" class="btn btn-sm btn-outline-secondary ml-2">
             <%= link_to genres_path,class: 'nav-link text-dark' do %>
-              <i class="fas fa-solid fa-tags"></i>　ジャンル一覧
+              　<i class="fas fa-utensils"></i> ジャンル一覧
             <% end %>
             </button>
           </li>
@@ -110,9 +100,6 @@
           </li>
 
          <% end %>
-
-        </form>
-        </nav>
         </ul>
       </div>
     </div>

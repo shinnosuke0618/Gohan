@@ -1,10 +1,24 @@
 <div class='container'>
-  <div class='row d-flex justify-content-around'>
-    <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0">
-
+  <div class='row mt-5'>
+    <div class="col-md-9 offset-1">
     <h3><%= @genre.name %></h3>
     <p><%= @genre.introduction %></p>
 
+    <div class="d-flex flex-wrap">
+      <% @genre.posts.each do |post| %>
+        <div class="mt-5 mr-4">
+          <%= link_to post_path(post.id) do %>
+          <%= image_tag post.get_image, size:'160x165', class: 'shadow' %>
+          </br>
+          <div class="mt-3">
+          <p style="color: black"><strong><%= post.title %></strong></p>
+          <br>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @posts %>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
       <h2 class="table-active">投稿一覧</h2>
 
       <div class="text-right mt-3 mb-3">
-        <%= link_to 'new', new_post_path, class: 'btn btn-outline-dark' %>
+        <%= link_to '新規投稿する', new_post_path, class: 'btn btn-outline-dark' %>
       </div>
 
 
@@ -13,8 +13,8 @@
           <tr>
             <th>タイトル</th>
             <th>ジャンル</th>
-            <th>説明</th>
-            <th>レストラン名</th>
+            <th>レストラン</th>
+            <th>レビュー</th>
             <th></th>
             <th colspan="5"></th>
           </tr>
@@ -31,7 +31,26 @@
             <td>
               <%= post.restaurant_name %>
             </td>
-            <td></td>
+            <td>
+              <%= link_to post_reviews_path(post.id) do %>
+              <div class="average-review-rating" data-score=<%= post.avg_score %>></div>
+                <script>
+                  $('.average-review-rating').empty();
+                  $('.average-review-rating').raty({
+                    readOnly: true,
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    score: function() {
+                      return $(this).attr('data-score')
+                    }
+                  });
+                </script>
+                <div class="average-score-display ml-3 pt-2">
+                <%= post.avg_score %>点（<%= post.reviews.count %>件のレビュー）
+              </div>
+               <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
