@@ -39,3 +39,7 @@ footer {
 .footer-text {
   color: #fff;
 }
+
+.pagination {
+  justify-content: center;
+}
